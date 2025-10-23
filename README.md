@@ -11,7 +11,7 @@ Install the required packages thanks to environment.yml
 
 ## Run code
 
-To run the code, one may use a command similar to:
+To run the code, one may use a command like:
 
 ```
 python stabsgd.py --seed 1 --batch-size 128 --lr 10. --min-gd-iterations 1000 --min-total-iterations 2000 --weight-decay 1e-4 --zeta-start 100 --zeta 100 --kappa 0.1 --gamma 1 --output-folder "test_new_optim"
@@ -30,10 +30,10 @@ where the parameters are:
 - gamma: Gamma parameter (see [3])
 - output-folder: Folder to store the results
 
-## Saved results
+## Results saved by default
 
 The results saved by default are the accuracies and losses of both training and testing datasets.
-Those values are computed every $\texttt{len(train_dataloader)}$ total iterations _and_ gradient descent only interations, which corresponds to the number of iterations in an epoch.
+Those values are computed every $\texttt{len(train\_dataloader)}$ total iterations _and_ gradient descent only interations, which corresponds to the number of iterations in an epoch.
 The optimizer "info" is also stored in a .json file, which, in particular, contains the history of stability ratio and kurtosis values, as well as the total number of gradient samples used to compute them throughout the training.
 
 
