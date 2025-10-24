@@ -9,7 +9,7 @@ class InlineStabSGD(Optimizer):
 
     This implementation alternates between:
     - an stability ratio computation phase (accumulate gradients over many steps)
-    - a gradient-descent phase (use estimated StabRatio to scale updates)
+    - a gradient descent phase (use estimated Stability Ratio to scale updates)
 
     Parameters
     ----------
@@ -22,21 +22,18 @@ class InlineStabSGD(Optimizer):
     zeta_start: int, optional
         Initial number of steps used to compute the Stability Ratio (default: 100).
     zeta: float, optional
-        Factor controlling how many samples to use for next Stability Ratio computation
-        (default: 100).
+        Factor controlling how many samples to use for next Stability Ratio computation (default: 100).
     kappa: float, optional
-        Factor controlling how many GD steps until next scheduling point
-        (default: 0.1).
+        Factor controlling how many GD steps until next scheduling point (t_next = kappa * t^gamma) (default: 0.1).
     gamma: float, optional
-        Factor controlling how many GD steps until next scheduling point
-        (default: 1.).
+        Factor controlling how many GD steps until next scheduling point (t_next = kappa * t^gamma) (default: 1.).
     eps: float, optional
         Small value to avoid division by zero (default: 1e-8).
     stab_eps: float, optional
         Minimum value for the Stability Ratio (default: 1e-8).
     """
 
-    def __init__(self, parameters, lr, weight_decay=0, zeta_start=100, zeta=100, kappa=0.1, gamma=1.0, eps=1e-8, stab_eps=1e-8):
+    def __init__(self, parameters, lr, weight_decay=0, zeta_start=100., zeta=100., kappa=0.1, gamma=1., eps=1e-8, stab_eps=1e-8):
         defaults = {
             "lr": lr,
             "weight_decay": weight_decay,

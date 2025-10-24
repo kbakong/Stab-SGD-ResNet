@@ -5,11 +5,10 @@ import torchvision
 import numpy as np
 from torch.utils.data import DataLoader
 from torchvision import transforms
-from tqdm import tqdm
 import os
 import json
 import argparse
-from custom_optimizer import InlineStabSGD
+from inline_stab_sgd import InlineStabSGD
 from models import resnet56_cifar
 
 
